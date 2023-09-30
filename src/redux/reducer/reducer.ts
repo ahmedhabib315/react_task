@@ -1,5 +1,11 @@
-import { Action } from "@reduxjs/toolkit";
-
+/**
+ * 
+ * Fetches, Adds, Update and Delete Customers from List and updates list in Local Storage according to requests
+ * 
+ * @param state 
+ * @param action 
+ * @returns 
+ */
 const getListReducer = (state: any = [], action: any) => {
   if (action.type === 'list') {
     localStorage.setItem('list', JSON.stringify(action.payload));

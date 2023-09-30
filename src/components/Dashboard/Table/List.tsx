@@ -3,6 +3,13 @@ import Table from 'react-bootstrap/Table';
 
 const List = ({ customers, editCustomer, deleteCustomer }: any) => {
   const [count, setcount] = useState(0);
+
+  /**
+   * 
+   * Update the Values of the fields
+   * 
+   * @param e 
+   */
   const handleEditClick = (e: any) => {
     const cust = customers[parseInt(e.target.id)];
     const name = cust.first_name != null && cust.last_name != null ? `${cust.first_name} ${cust.last_name}` : '';
@@ -10,6 +17,12 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
     editCustomer({ ...cust, name: name.trim(), index: parseInt(e.target.id) });
   }
 
+  /**
+   * 
+   * Handle Sorting of List according to filter provided
+   * 
+   * @param el 
+   */
   const handleSort = (el: any) => {
     el.preventDefault();
     const sortBy: string = el.target.id;
@@ -26,10 +39,21 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
     setcount(count + 1);
   }
 
+  /**
+   * 
+   * Rerender the table after sorting the list
+   * 
+   */
   useEffect(() => {
     //Rerender the table to show sorted result
   }, [count]);
 
+  /**
+   * 
+   * Save the id of Customer to Delete 
+   * 
+   * @param e 
+   */
   const handleDeleteClick = (e: any) => {
     e.preventDefault();
     deleteCustomer(e.target.id);
@@ -50,7 +74,7 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
       <tbody>
         {customers.map((customer: any, index: number) => {
           return (<tr key={customer.id}>
-            <td><img src={customer.avatar} alt="Profile Picture" /> </td>
+            <td><img src={customer.avatar ? customer.avatar : ''} alt="Profile Picture" /> </td>
             <td>{customer.id.toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })}</td>
             <td>{`${customer.first_name} ${customer.last_name}`}</td>
             <td>{customer.email}</td>

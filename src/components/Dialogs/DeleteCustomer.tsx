@@ -6,6 +6,7 @@ import { actions } from '../../redux';
 function DeleteCustomer({ hide, id }: any) {
   const dispatch: any = useDispatch();
 
+  // Send the index of the customer to delete to dispatcher and close dialog
   const handleDelete = () => {
     dispatch(actions.deleteCustomer(parseInt(id)));
     hide();

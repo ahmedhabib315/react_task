@@ -20,20 +20,37 @@ function Dashboard() {
   const [editDialogData, seteditDialogData] = useState({});
   const dispatch: any = useDispatch();
 
+  /**
+   * 
+   * Get List on Page Load from either Local Storage or external Api
+   */
   useEffect(() => {
     dispatch(actions.getList());
   }, []);
 
+  /**
+   * 
+   * Save the old Data of Customer to update and Open Edit Dialog Box
+   * 
+   * @param data 
+   */
   const editCustomer = (data: any) => {
     seteditDialogData(data);
     seteditDialog(true);
   }
 
+  /**
+   * 
+   * Saves the Id of Customer to Delete and Opens the Delete Dialog Box
+   * 
+   * @param id 
+   */
   const deleteCustomer = (id: string) => {
     setdeleteDialogData(id);
     setdeleteDialog(true);
   }
 
+  //If any of the Dialog needed to be displayed then hide the Dashboard Component
   if (addDialog) {
     return <AddCustomer hide={() => setaddDialog(false)} />
   }

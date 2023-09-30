@@ -1,6 +1,11 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 
+/**
+ * Fetches the list data from either Local Storage or External Api
+ * 
+ * @returns void
+ */
 export const getList = () => {
   return async (dispatch: Dispatch): Promise<void> => {
     let list: any = [];
@@ -24,6 +29,13 @@ export const getList = () => {
   }
 }
 
+/**
+ * 
+ * Sends New Customer Details to Reducer
+ * 
+ * @param payload 
+ * @returns 
+ */
 export const addCustomer = (payload: any) => {
   return async (dispatch: Dispatch): Promise<void> => {
     const data = {
@@ -38,6 +50,14 @@ export const addCustomer = (payload: any) => {
   }
 }
 
+/**
+ * 
+ * Sends updated Details of Existing Customer with Index to reducer
+ * 
+ * @param payload 
+ * @param index 
+ * @returns 
+ */
 export const editCustomer = (payload: any, index: number) => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch({
@@ -48,6 +68,13 @@ export const editCustomer = (payload: any, index: number) => {
   }
 }
 
+/**
+ * 
+ * Sends the index for the customer to remove from list to the reducer
+ * 
+ * @param index 
+ * @returns 
+ */
 export const deleteCustomer = (index: number) => {
   return async (dispatch: Dispatch): Promise<void> => {
     dispatch({

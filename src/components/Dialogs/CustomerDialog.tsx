@@ -7,13 +7,25 @@ import { actions } from '../../redux';
 
 function CustomerDialog({ hide, ...props }: any) {
   const [data, setdata] = useState(props && props.props ? props.props : {});
-
   const dispatch: any = useDispatch();
 
+  /**
+   * 
+   * Handle and update field values of the dialog
+   * 
+   * @param e 
+   */
   const handleOnChange = (e: any) => {
     e.preventDefault()
     setdata({ ...data, [e.target.name]: e.target.value });
   }
+
+  /**
+   * 
+   * Add or Update the Customer according to the Request and Hide the dialog boxes
+   * 
+   * @param el 
+   */
   const handleSubmit = (el: any) => {
     el.preventDefault();
     if (data.index != null) {
@@ -26,6 +38,12 @@ function CustomerDialog({ hide, ...props }: any) {
   }
 
 
+  /**
+   * 
+   * Save Image Values
+   * 
+   * @param event 
+   */
   const handleImageChange = (event: any) => {
     const file = event.target.files[0];
 
