@@ -31,7 +31,6 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
         {customers.map((customer: any, index: number) => {
           return (<tr key={customer.id}>
             <td><img src={customer.avatar} alt="Profile Picture" /> </td>
-            <td>{index + 1} </td>
             <td>{customer.id}</td>
             <td>{`${customer.first_name} ${customer.last_name}`}</td>
             <td>{customer.email}</td>

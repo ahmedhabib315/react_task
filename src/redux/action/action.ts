@@ -5,12 +5,17 @@ export const getList = () => {
   return async (dispatch: Dispatch): Promise<void> => {
     let list: any = [];
     const items = await localStorage.getItem('list');
-    if (items) {
+    if (items && JSON.parse(items).length > 0) {
       list = JSON.parse(items);
     }
     else {
-      const response = await axios.get("https://reqres.in/api/users?page=1");
-      list = await response.data.data;
+      try{
+        const response = await axios.get("https://reqres.in/api/users?page=1");
+        list = await response.data.data;
+      }
+      catch{
+        list = [];
+      }
     }
     dispatch({
       type: 'list',
