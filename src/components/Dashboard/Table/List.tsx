@@ -10,7 +10,7 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
     editCustomer({ ...data, name: name.trim(), index: parseInt(e.target.id) });
   }
 
-  const handleDeleteClick = (e: any) =>{
+  const handleDeleteClick = (e: any) => {
     e.preventDefault();
     deleteCustomer(e.target.id);
   }
@@ -30,6 +30,7 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
       <tbody>
         {customers.map((customer: any, index: number) => {
           return (<tr key={customer.id}>
+            <td><img src={customer.avatar} alt="Profile Picture" /> </td>
             <td>{index + 1} </td>
             <td>{customer.id}</td>
             <td>{`${customer.first_name} ${customer.last_name}`}</td>
