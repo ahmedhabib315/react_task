@@ -41,7 +41,8 @@ export const addCustomer = (payload: any) => {
     const data = {
       email: payload.email,
       first_name: payload.name.split(' ')[0] || '',
-      last_name: payload.name.split(' ')[1] || ''
+      last_name: payload.name.split(' ')[1] || '',
+      avatar: payload.avatar ? payload.avatar : ''
     }
     dispatch({
       type: 'add',

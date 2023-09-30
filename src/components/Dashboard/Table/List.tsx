@@ -3,6 +3,17 @@ import Table from 'react-bootstrap/Table';
 
 const List = ({ customers, editCustomer, deleteCustomer }: any) => {
   const [count, setcount] = useState(0);
+  const [alternateImageUrl, setAlternateImageUrl] = useState("/default.png");
+
+  /**
+   * 
+   * Set Default Image if the image is broken
+   * 
+   * @param event 
+   */
+  const handleImageError = (event: any)=>{
+    event.target.src = alternateImageUrl;
+  }
 
   /**
    * 
@@ -75,7 +86,7 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
         {customers.map((customer: any, index: number) => {
             // eslint-disable-next-line
           return (<tr key={customer.id}>
-            <td><img src={customer.avatar ? customer.avatar : ''} alt="Profile Picture" /> </td>
+            <td><img src={customer.avatar ? customer.avatar : ''} alt="Profile Picture" onError={handleImageError} /> </td>
             <td>{customer.id.toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })}</td>
             <td>{`${customer.first_name} ${customer.last_name}`}</td>
             <td>{customer.email}</td>

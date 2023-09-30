@@ -12,7 +12,8 @@ const getListReducer = (state: any = [], action: any) => {
     return action.payload ? action.payload : [];
   }
   else if (action.type === 'add') {
-    const data = [...state, { ...action.payload, id: state.length + 1 }];
+    const id = state[state.length -1 ].id ? state[state.length -1 ].id + 1 : 1;
+    const data = [...state, { ...action.payload, id: id }];
     localStorage.setItem('list', JSON.stringify(data));
     return data;
   }

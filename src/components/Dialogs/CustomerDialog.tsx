@@ -49,9 +49,8 @@ function CustomerDialog({ hide, ...props }: any) {
 
     const reader: any = new FileReader();
     reader.onload = () => {
-      const blob = new Blob([reader.result]);
-      const imageUrl = URL.createObjectURL(blob);
-      setdata({ ...data, avatar: imageUrl.replace('blob:', '') })
+      const imageUrl = URL.createObjectURL(event.target.files[0]);
+      setdata({ ...data, avatar: imageUrl })
     };
     reader.readAsDataURL(file);
   };
