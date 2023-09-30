@@ -8,7 +8,6 @@ import TableHeader from './Table/TableHeader';
 import List from './Table/List';
 import AddCustomer from '../Dialogs/AddCustomer';
 import EditCustomer from '../Dialogs/EditCustomer';
-import { createTrue } from 'typescript';
 import DeleteCustomer from '../Dialogs/DeleteCustomer';
 
 function Dashboard() {

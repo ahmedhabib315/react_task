@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 
 const List = ({ customers, editCustomer, deleteCustomer }: any) => {
@@ -73,6 +73,7 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
       </thead>
       <tbody>
         {customers.map((customer: any, index: number) => {
+            // eslint-disable-next-line
           return (<tr key={customer.id}>
             <td><img src={customer.avatar ? customer.avatar : ''} alt="Profile Picture" /> </td>
             <td>{customer.id.toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })}</td>
