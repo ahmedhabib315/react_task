@@ -7,7 +7,6 @@ import { actions } from '../../redux';
 
 function CustomerDialog({ hide, ...props }: any) {
   const [data, setdata] = useState(props && props.props ? props.props : {});
-  const [imageUrl, setImageUrl] = useState('');
 
   const dispatch: any = useDispatch();
 
@@ -15,8 +14,8 @@ function CustomerDialog({ hide, ...props }: any) {
     e.preventDefault()
     setdata({ ...data, [e.target.name]: e.target.value });
   }
-  console.log('::data::::', data);
-  const handleSubmit = () => {
+  const handleSubmit = (el: any) => {
+    el.preventDefault();
     if (data.index != null) {
       dispatch(actions.editCustomer(data, data.index));
     }
@@ -44,7 +43,7 @@ function CustomerDialog({ hide, ...props }: any) {
     <>
       <Modal show={true} onHide={hide}>
         <Modal.Header closeButton>
-          <Modal.Title>{Object.keys(data).length > 0 ? 'Edit Customer' : 'Add New Customer'}</Modal.Title>
+          <Modal.Title>{data.id ? 'Edit Customer' : 'Add New Customer'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -69,7 +68,7 @@ function CustomerDialog({ hide, ...props }: any) {
               <input type="file" onChange={handleImageChange} name="avatar" accept="image/*" />
             </Form.Group>
             <Button type="submit" variant="primary" onSubmit={handleSubmit}>
-              {Object.keys(data).length > 0 ? 'EDIT CUSTOMER' : 'ADD CUSTOMER'}
+              {data.id ? 'EDIT CUSTOMER' : 'ADD CUSTOMER'}
             </Button>
           </Form>
         </Modal.Body>

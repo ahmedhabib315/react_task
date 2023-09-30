@@ -17,7 +17,7 @@ function Dashboard() {
   const [editDialog, seteditDialog] = useState(false);
   const [deleteDialog, setdeleteDialog] = useState(false);
   const [deleteDialogData, setdeleteDialogData] = useState('');
-  const [editDialogData, seteditDialogData] = useState({})
+  const [editDialogData, seteditDialogData] = useState({});
   const dispatch: any = useDispatch();
 
   useEffect(() => {

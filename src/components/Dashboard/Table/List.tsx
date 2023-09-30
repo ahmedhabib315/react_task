@@ -1,14 +1,34 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import Table from 'react-bootstrap/Table';
 
 const List = ({ customers, editCustomer, deleteCustomer }: any) => {
-
+  const [count, setcount] = useState(0);
   const handleEditClick = (e: any) => {
-    const data = customers[parseInt(e.target.id)];
-    const name = data.first_name != null && data.last_name != null ? `${data.first_name} ${data.last_name}` : '';
+    const cust = customers[parseInt(e.target.id)];
+    const name = cust.first_name != null && cust.last_name != null ? `${cust.first_name} ${cust.last_name}` : '';
 
-    editCustomer({ ...data, name: name.trim(), index: parseInt(e.target.id) });
+    editCustomer({ ...cust, name: name.trim(), index: parseInt(e.target.id) });
   }
+
+  const handleSort = (el: any) => {
+    el.preventDefault();
+    const sortBy: string = el.target.id;
+    if (sortBy === '1') {
+      customers.sort((a: any, b: any) => a.id - b.id)
+    }
+    else if (sortBy === '2') {
+      customers.sort((a: any, b: any) => a.first_name.localeCompare(b.first_name))
+    }
+    else if (sortBy === '3') {
+      customers.sort((a: any, b: any) => a.email.localeCompare(b.email))
+    }
+
+    setcount(count + 1);
+  }
+
+  useEffect(() => {
+    //Rerender the table to show sorted result
+  }, [count]);
 
   const handleDeleteClick = (e: any) => {
     e.preventDefault();
@@ -20,9 +40,9 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
       <thead>
         <tr>
           <th></th>
-          <th>Customer Id <button>arrow</button></th>
-          <th>Customer Name <button>arrow</button></th>
-          <th>Email <button>arrow</button></th>
+          <th>Customer Id <button id='1' onClick={handleSort}>arrow</button></th>
+          <th>Customer Name <button id='2' onClick={handleSort}>arrow</button></th>
+          <th>Email <button id='3' onClick={handleSort}>arrow</button></th>
           <th></th>
           <th></th>
         </tr>
@@ -31,7 +51,7 @@ const List = ({ customers, editCustomer, deleteCustomer }: any) => {
         {customers.map((customer: any, index: number) => {
           return (<tr key={customer.id}>
             <td><img src={customer.avatar} alt="Profile Picture" /> </td>
-            <td>{customer.id}</td>
+            <td>{customer.id.toLocaleString('en-US', { minimumIntegerDigits: 3, useGrouping: false })}</td>
             <td>{`${customer.first_name} ${customer.last_name}`}</td>
             <td>{customer.email}</td>
             <td><button onClick={handleEditClick} id={index.toString()}>Edit</button></td>
