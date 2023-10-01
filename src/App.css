@@ -1,15 +1,214 @@
-.header {
-  font-family: Lato;
-  background: transparent url('assets/images/Rectangle\ 40.svg') 0% 0% no-repeat !important;
-  opacity: 1;
+.drawer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px;
+  padding-left: 24px;
+  padding-top: 48px;
+  width: 400px;
+  height: 100%;
+  background: #015249;
+  border-radius: 0px 20px 20px 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
-.button {
-  top: 197px;
-  left: 469px;
-  width: 344px;
-  height: 70px;
+.drawer img {
+  height: 58px;
+  margin-bottom: 124px;
+}
+
+.drawer button {
+  background-color: #043933 !important;
+  height: 69px;
+  box-shadow: 0px 5px 25px #00000040;
   border-radius: 10px;
-  background: transparent url('assets/images/Base.svg') 0% 0% no-repeat padding-box;
-  opacity: 1;
+  width: 100%;
+  font-size: 20px;
+  color: white;
+}
+
+.drawer button .start-icon {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  margin-right: 24px;
+}
+
+/* header styles */
+.header {
+  height: 150px;
+  padding: 0px;
+  background: var(--bs-white);
+  box-shadow: 0px 3px 15px #6b6b6b1a;
+  position: fixed;
+  padding-left: 400px;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header .brand {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+/* button styles */
+.button {
+  height: 70px;
+  padding: 0px 36px;
+  background: rgb(87, 188, 144);
+  border-radius: 10px;
+  margin: 48px 0px 76px 0px;
+  background: linear-gradient(
+    105deg,
+    rgba(87, 188, 144, 1) 0%,
+    rgba(0, 75, 64, 1) 100%
+  );
+}
+
+.button .start-icon {
+  margin-right: 36px;
+  font-size: 20px;
+}
+
+/* table styles */
+.customer-table thead tr th {
+  background: hsla(154, 43%, 54%, 0.3);
+  color: #015249;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.customer-table thead tr th svg {
+  font-size: 16px;
+  margin-left: 2px;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.list-items {
+  background: #f3f3f3 !important;
+  padding: 0px !important;
+  padding-top: 30px !important;
+}
+
+.list-items div {
+  padding: 16px 10px;
+  height: 124px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+.list-items div .profile-image {
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.list-items .customer-id {
+  font-size: 14px;
+  color: #5a5f65;
+}
+
+.list-items .customer-name {
+  font-size: 14px;
+  color: #57bc90;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.list-items .customer-email {
+  font-size: 14px;
+  color: #5a5f65;
+  font-weight: 600;
+}
+
+/* pop models styles */
+.customer-model .modal-content {
+  border-radius: 14px;
+  background: #fbfcfc;
+}
+
+.customer-model .modal-header {
+  background: url(./assets/images/pop-bg.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 140px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.customer-model .modal-header button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.customer-model .modal-header .modal-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: white;
+}
+
+.customer-model .modal-body {
+  padding: 56px 36px;
+}
+
+.customer-model .modal-body form .mb-3 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.customer-model .modal-body .submit-btn {
+  margin-top: 2rem;
+  width: 100%;
+  background: linear-gradient(
+    105deg,
+    rgba(87, 188, 144, 1) 0%,
+    rgba(0, 75, 64, 1) 100%
+  );
+}
+
+.delete-model .modal-body{
+  padding: 64px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.delete-model img {
+  width: 80px;
+  height: 80px;
+}
+
+.delete-model .model-footer{
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.delete-model h4 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #000000;
+}
+
+.delete-model p {
+  font-size: 16px;
+  text-align: center;
+  color: #000000;
+}
+
+.delete-model .model-footer button{
+  width: 100%;
 }

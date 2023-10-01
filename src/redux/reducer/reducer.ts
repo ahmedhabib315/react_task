@@ -24,7 +24,8 @@ const getListReducer = (state: any = [], action: any) => {
       ...data[index],
       first_name: action.payload.name.split(' ')[0] || '',
       last_name: action.payload.name.split(' ')[1] || '',
-      email: action.payload.email
+      email: action.payload.email,
+      avatar: action.payload.avatar
     }
 
     localStorage.setItem('list', JSON.stringify(data));
